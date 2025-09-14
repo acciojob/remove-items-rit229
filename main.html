@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<style type="text/css"> 
-			body {margin: 30px;} 
-		</style>  
-		<meta charset=utf-8 /> 
-		<title>Remove items from a dropdown list</title>
-	</head>
+<head>
+    <style type="text/css"> 
+        body {margin: 30px;} 
+    </style>  
+    <meta charset=utf-8 /> 
+    <title>Remove items from a dropdown list</title>
+</head>
 
-	<body>
-		<form> 
-			<select id="colorSelect"> 
-				<option>Red</option> 
-				<option>Green</option> 
-				<option>White</option> 
-				<option>Black</option> 
-			</select> 
-			<input type="button" value="Select and Remove"> 
-		</form>
+<body>
+    <form> 
+        <select id="colorSelect"> 
+            <option>Red</option> 
+            <option>Green</option> 
+            <option>White</option> 
+            <option>Black</option> 
+        </select> 
+        <input type="button" value="Select and Remove" id="removeButton"> 
+    </form>
 
-		<script type="text/javascript" src="./script.js">
-		</script>
+    <script type="text/javascript">
+        document.getElementById("removeButton").addEventListener("click", function() {
+            var select = document.getElementById("colorSelect");
+            var selectedValue = select.value;
 
-	</body>
+            // Loop through the options to find and remove the selected one
+            for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === selectedValue) {
+                    select.remove(i);
+                    break; // Exit the loop after removing the option
+                }
+            }
+        });
+    </script>
 
+</body>
 </html>
